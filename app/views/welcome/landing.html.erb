@@ -1,16 +1,57 @@
-<html>
-  <body>
-    <div class="first_tab">
-      <p>Blocipedia: Social markdown wikis!</p>
+
+<div class="first_tab">
+  <h2>Blocipedia: Social markdown wikis!</h2>
+</div>
+
+<div class= "signup_tab">
+  <h3> Create and share mark down wikis</h3>
+  <%= link_to "Sign up", new_user_registration_path, class: "myButton" %>
+</div>
+
+<div class="signin_tab">
+	<%= link_to "Sign In", new_user_session_url %>
+</div>
+
+
+
+<div class="row" id="accounts">
+  <h2>Account Features</h2>
+
+  <div class="col-md-6">
+    <div class="accounts-block">
+      <h3>Standard</h3>
+      <h4>Free</h4>
+      <ul>
+        <li>Unlimited Wikis</li>
+        <li>Create Public Wikis</li>
+        <li>Edit Public Wikis</li>
+        <li>Be A Collaborator</li>
+      </ul>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg' %>
     </div>
-    <div class= "signup_tab">
-      <p> Create and share mark down wikis</p>
-      <button type = button>Sign Up</button>
+  </div>
+
+  <div class="col-md-6">
+    <div class="accounts-block">
+      <h3>Premium</h3>
+      <h4>$15<span class="per-month"> /month</span></h4>
+      <ul>
+        <li>Create Private Wikis</li>
+        <li>Add Collaborators</li>
+        <li>Remove Collaborators</li>
+        <li>Plus All Standard Features</li>
+      </ul>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg' %>
     </div>
-    <div class= "last_tab">
-      <div class= "col-md-8">
-        <p>create unlimited public wikis</p>
-        <p>Create private wikis</p>
-        
-  </body>
-</html>
+  </div>
+</div>
+
+<!--<div class= "row">
+  <div class= "col-md-4">
+    <h3>create unlimited public wikis</h3> 
+  </div>
+
+  <div class= "col-md-4">
+    <h3>Create private wikis</h3>
+  </div>
+</div> -->
