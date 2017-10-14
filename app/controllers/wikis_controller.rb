@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+ before_action :authorize_user, except: [:index, :show, :update, :edit]
  before_action :authenticate_user!
 
   def index
@@ -55,6 +56,15 @@ class WikisController < ApplicationController
      else
        flash.now[:alert] = "There was an error deleting the wiki."
        render :show
+     end
+   end
+
+   def authorize_user
+
+     #wiki = Wiki.find(params[:id])
+     unless current_user.member || current_user.admin?
+       flash[:alert] = "You must be an admin to do that."
+       redirect_to wikis_path
      end
    end
 end
