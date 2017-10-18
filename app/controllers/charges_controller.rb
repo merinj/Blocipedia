@@ -24,14 +24,14 @@ class ChargesController < ApplicationController
      currency: 'usd'
    )
 
-<<<<<<< HEAD
-   current_user.update_attribute(:role, 'premium')
-=======
-   
->>>>>>> user-story-6-seed-data
+  if current_user.update(role: 'premium')
  
    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
    redirect_to user_path(current_user) # or wherever
+  else
+      flash[:error] = "There was an error upgrading your account."
+      redirect_to edit_user_registration_path
+    end
  
    # Stripe will send back CardErrors, with friendly messages
    # when something goes wrong.

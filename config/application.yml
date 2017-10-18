@@ -10,6 +10,14 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-SENDGRID_USERNAME: get_sendgrid_password_from_production
-SENDGRID_PASSWORD: get_sendgrid_username_from_production
-MY_SUPER_SECRET_VARIABLE: secret123456
+stripe_api_key: "sk_live_dSqzdUq80sw9GWmuoI0qJ9rL"
+# ENV["stripe_api_key"] # => "sk_live_dSqzdUq80sw9GWmuoI0qJ9rL"
+# ENV.key?("stripe_api_key") # => true
+# ENV["google_analytics_key"] # => nil
+# ENV.key?("google_analytics_key") # => false
+
+# Figaro.env.stripe_api_key # => "sk_live_dSqzdUq80sw9GWmuoI0qJ9rL"
+# Figaro.env.stripe_api_key? # => true
+# Figaro.env.google_analytics_key # => nil
+# Figaro.env.google_analytics_key? # => false
+# # 
