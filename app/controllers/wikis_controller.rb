@@ -62,7 +62,7 @@ class WikisController < ApplicationController
    def authorize_user
 
      #wiki = Wiki.find(params[:id])
-     unless current_user.member || current_user.admin?
+     unless current_user.standard? || current_user.admin?
        flash[:alert] = "You must be an admin to do that."
        redirect_to wikis_path
      end
