@@ -7,6 +7,9 @@
      <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
     </div>
 
-  <div class="col-md-4">
-     <%= link_to "upgrade to premium", new_charge_url, class: 'btn btn-success' %>
-    </div>  
+
+<div class="col-md-4">
+	<% if current_user.standard? %>
+	  <%= link_to "upgrade to premium", new_charge_url, class: 'btn btn-success' %>
+	  <% end %>
+</div>
