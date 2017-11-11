@@ -1,10 +1,10 @@
 class ChargesController < ApplicationController
 
  def new
- 	@amount = 15_00
+ 	  @amount = 15_00
     @stripe_btn_data = {
-     key: "#{ Rails.configuration.stripe[:publishable_key] }",
-     description: "BigMoney Membership - #{current_user}",
+     key: "#{Rails.configuration.stripe[:publishable_key]}",
+     description: "BigMoney Membership - #{current_user.email}",
      amount: @amount
    }
  end
@@ -19,15 +19,17 @@ class ChargesController < ApplicationController
    # Where the real magic happens
    charge = Stripe::Charge.create(
      customer: customer.id, # Note -- this is NOT the user_id in your app
-     amount: Amount.default,
-     description: "BigMoney Membership - #{current_user.email}",
+     amount: 15_00,
+     description: "Premium Membership - #{current_user.email}",
      currency: 'usd'
    )
+
+   current_user.update_attributes(role: 'premium')
 
   if current_user.update(role: 'premium')
  
    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-   redirect_to user_path(current_user) # or wherever
+   redirect_to wikis_path
   else
       flash[:error] = "There was an error upgrading your account."
       redirect_to edit_user_registration_path
