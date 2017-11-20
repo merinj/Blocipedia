@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :wikis
   resources :charges, only: [:new, :create]
+  resources :downgrades, only: [:new, :create]
 
  devise_for :users,skip: [:sessions]
  as :user do
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   post 'signin', to: 'devise/sessions#create', as: :user_session
   delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
 end
+
+post 'downgrades/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 root 'welcome#landing'
 end

@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
  before_action :authenticate_user!
- before_action :authorize_user, except: [:index, :show, :update, :edit]
+ before_action :authorize_user, except: [:index, :update, :edit]
  
   def index
   	@wikis = Wiki.all
@@ -8,10 +8,17 @@ class WikisController < ApplicationController
 
   def show
   	@wiki = Wiki.find(params[:id])
+
+    unless (@wiki.private == false) || @wiki.user == current_user
+      flash[:alert] = "You are not authorized to see the wiki.Please upgrade!!"
+      redirect_to new_charge_path
+     end
+      
   end
 
   def new
   	@wiki = Wiki.new
+    authorize @wiki
   end
 
   def create

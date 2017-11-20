@@ -17,10 +17,12 @@ require 'faker'
  users = User.all
 
   # Create Wikis
- 15.times do
+ 20.times do
   Wiki.create!(
      title: Faker::Lorem.word,
-     body:  Faker::Lorem.paragraph
+     body:  Faker::Lorem.paragraph,
+     user: User.first,
+     private: false
    )
  end
 wikis = Wiki.all
@@ -35,13 +37,17 @@ wikis = Wiki.all
  # Create a standard
  standard = User.create!(
    email:    'standard@example.com',
-   password: 'helloworld'
+   password: 'helloworld',
+   role: 'standard'
  )
 # Create a premium user
  premium = User.create!(
    email:    'premium@example.com',
-   password: 'helloworld'
+   password: 'helloworld',
+   role: 'premium'
  )
+# create private wikis
+
 
 puts "Seed finished"
  puts "#{User.count} users created"

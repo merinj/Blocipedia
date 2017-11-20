@@ -9,7 +9,11 @@
 
 
 <div class="col-md-4">
-	<% if current_user.standard? %>
+	<% if current_user.standard? || current_user.role.nil? %>
 	  <%= link_to "upgrade to premium", new_charge_url, class: 'btn btn-success' %>
-	  <% end %>
+	  
+   <% else %>
+      <% link_to "Downgrade my account",downgrades_create_path, class: 'btn btn-success' %>
+
+    <% end %>  
 </div>
