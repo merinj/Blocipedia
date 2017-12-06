@@ -1,0 +1,5 @@
+- Create a collaborator model (with a has_many through relationship)
+- Create a collaborators controller with action index, create and destroy
+- Add a route for collaborators under wikis 
+- Create an index.html.erb view for collaborators
+- In the index action you're going to query for wiki (id for wiki is in params[:wiki_id]) 
