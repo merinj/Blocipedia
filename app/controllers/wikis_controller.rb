@@ -2,9 +2,9 @@ class WikisController < ApplicationController
  before_action :authenticate_user!
  before_action :authorize_user, except: [:index, :update, :edit]
  
-  def index
-  	@wikis = Wiki.all
-  end
+ def index
+     @wikis = policy_scope(Wiki)
+   end
 
   def show
   	@wiki = Wiki.find(params[:id])
